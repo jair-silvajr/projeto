@@ -5,18 +5,29 @@
 }
 
 :root {
-  --text-color: white;
-  --bg-url: url(./assets/bg-mobile.jpg.jpg);
+  --text-color: #ffffff;
+  --gradient: linear-gradient(90deg, rgb(64, 7, 100), rgb(14, 43, 72));
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.1);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url(./assets/moon-stars.svg);
+  --background-button: linear-gradient(
+    -132deg,
+    rgb(135, 22, 237),
+    rgb(49, 121, 178)
+  );
 }
 
 .light {
-  --text-color: black;
-  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --text-color: #0a0a00;
+  --gradient: linear-gradient(59deg, rgb(232, 146, 255), rgb(95, 170, 244));
+  --background-button: linear-gradient(
+    59deg,
+    rgb(209, 84, 242),
+    rgb(3, 93, 183)
+  );
+
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -25,7 +36,7 @@
 }
 
 body {
-  background: var(--bg-url) no-repeat top center/cover;
+  background: var(--gradient);
   height: 100vh;
 }
 body * {
@@ -78,6 +89,20 @@ body * {
 .light #switch button {
   animation: slide-in 0.4s forwards;
 }
+
+/* animation left to right button */
+@keyframes slide-in {
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  to {
+    left: 0;
+  }
+}
+
 #switch button:hover {
   outline: 8px solid var(--highlight-color);
 }
@@ -111,7 +136,8 @@ ul li a {
 
   padding: 16px 24px;
 
-  background: var(--surface-color);
+  background: var(--background-button);
+
   border: 1px solid var(--stroke-color);
   border-radius: 8px;
 
@@ -121,13 +147,12 @@ ul li a {
 
   text-decoration: none;
   font-weight: 500;
-
-  transition: backgroud 0.2s;
+  opacity: 0.8;
+  transition: 0.3s;
 }
 /* pseudo-selector */
 ul li a:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1.5px solid var(--text-color);
+  opacity: 1;
 }
 /*social-links */
 
@@ -166,23 +191,5 @@ footer {
 
   .light {
     --bg-url: url(./assets/bg-desktoplight.jpg);
-  }
-}
-/* animation */
-@keyframes slide-in {
-  from {
-    left: 0;
-  }
-  to {
-    left: 50%;
-  }
-}
-
-@keyframes slide-back {
-  from {
-    left: 50%;
-  }
-  to {
-    left: 0;
   }
 }
